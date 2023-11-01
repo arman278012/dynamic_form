@@ -1,23 +1,25 @@
 import logo from './logo.svg';
 import './App.css';
+import DynamicForm from './Components/DynamicForm';
+import DisplayData from './Components/DisplayData';
+import { useContext } from 'react';
+import { AppContext } from './Components/AuthContext';
+import { Route, Router, Routes } from 'react-router-dom';
 
 function App() {
+
+  const { clicked } = useContext(AppContext)
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
+   
+            {
+          clicked ? (<DisplayData />) : (<DynamicForm />)
+            }
+      
+
+
+
     </div>
   );
 }
